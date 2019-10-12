@@ -4,6 +4,15 @@ let computerCards = [];
 let computerScore = 0;
 let currentTurn = 0;
 
+function nextTurn() {
+  currentTurn++;
+  if (currentTurn < playerCards.length) {
+    displayCards(currentTurn);
+  } else {
+    alert(`Game Over!\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`)
+  }
+}
+
 function getCards(deck) {
   let handSize = 4
   let randomSeed = getRandomInt(0, deck.length - 2 * handSize - 1);
@@ -25,6 +34,7 @@ function displayCards(turn) {
     .then(data => {
       cardContainer.prepend(createCard(data, 'player-card'));
       addEventsToCard();
+      setTimeout(() => document.querySelector('.player-card').classList.add('flipped'), 200);
     });
   fetch('https://cors-anywhere.herokuapp.com/https://bio.torre.co/api/bios/' + computerCards[turn].person.publicId)
     .then(response => response.json())
@@ -33,21 +43,29 @@ function displayCards(turn) {
     });
 }
 
-function gameTurn(target) {
-  let selectedStat = target.getAttribute('data-stat');
-  let playerCardValue = parseInt(target.getAttribute('data-value'));
-  let computerCardValue = parseInt(document.querySelector('.computer-card__stat[data-stat=' + selectedStat + ']').getAttribute('data-value'));
-  if (playerCardValue > computerCardValue) {
-    playerScore++;
-  } else {
-    computerScore++;
-  }
-  currentTurn++;
-  if (currentTurn < playerCards.length) {
-    displayCards(currentTurn);
-  } else {
-    alert(`Game Over!\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`)
-  }
+function gameTurn(playerStat) {
+  let selectedStat = playerStat.getAttribute('data-stat');
+  let playerStatValue = parseInt(playerStat.getAttribute('data-value'));
+  let computerStat = document.querySelector('.computer-card__stat[data-stat=' + selectedStat + ']');
+  let computerStatValue = parseInt(computerStat.getAttribute('data-value'));
+
+  removeEventsFromCard();
+  playerStat.classList.add('selected');
+  computerStat.classList.add('selected');
+  document.querySelector('.computer-card').classList.add('flipped');
+
+  setTimeout(() => {
+    if (playerStatValue > computerStatValue) {
+      playerStat.classList.add('winner');
+      computerStat.classList.add('loser');
+      playerScore++;
+    } else {
+      playerStat.classList.add('loser');
+      computerStat.classList.add('winner');
+      computerScore++;
+    }
+    setTimeout(() => nextTurn(), 1000);
+  }, 1000);
 }
 
 function init() {
