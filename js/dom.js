@@ -13,7 +13,7 @@ function createCard(fullInfo, type) {
                       <div class='person-avatar'>
                         <svg viewbox='0 0 100 120'>
                           <defs>
-                            <clipPath id="hexagon_clip">
+                            <clipPath id='hexagon_clip'>
                               <path id='hexagon'
                                 d='M 44, 9
                                 A 12 12 0 0 1 56, 9
@@ -30,8 +30,8 @@ function createCard(fullInfo, type) {
                                 Z' />
                             </clipPath>
                           </defs>
-                          <image href='${avatar}' width='100' height='120' clip-path="url(#hexagon_clip)" />
-                          <use href="#hexagon" stroke='white' stroke-width='6' fill="transparent" />
+                          <image href='${avatar}' width='100' height='120' clip-path='url(#hexagon_clip)' />
+                          <use href='#hexagon' stroke='white' stroke-width='6' fill='transparent' />
                         </svg>
                       </div>
                       <div class='person-info col center'>
@@ -58,10 +58,15 @@ function createCard(fullInfo, type) {
                         </div>
                       </div>
                     </div>
-                    <div class='card-face back'>
+                    <div class='card-face back row center justify-center'>
+                      <img src='https://www.torre.co/hubfs/logo.png' alt='Torre logo' width='150'>
                     </div>`;
 
   return card;
+}
+
+function showLoading(parentNode) {
+  parentNode.innerHTML = `<div class='loader row center justify-center'><p></p></div>`;
 }
 
 let handleClick = () => gameTurn(event.currentTarget);
