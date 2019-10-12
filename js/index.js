@@ -4,7 +4,6 @@ let computerCards = [];
 let computerScore = 0;
 let currentTurn = 0;
 
-
 function reset() {
   playerCards = [];
   playerScore = 0;
@@ -96,6 +95,9 @@ function init() {
       getCards(connections);
       displayCards(currentTurn);
     });
+
+  // fetch leaderboard data then
+  populateLeaderboard('Go do some backend');
 }
 
 init();
