@@ -1,4 +1,4 @@
-function createCard(fullInfo) {
+function createCard(fullInfo, type) {
   let noPictureURL = 'http://www.williamscactus.co.uk/Graphics/NoImage.jpg';
   let avatar = fullInfo.person.picture ? fullInfo.person.picture : noPictureURL;
   let name = fullInfo.person.name;
@@ -8,7 +8,7 @@ function createCard(fullInfo) {
   let education = fullInfo.stats.education ? fullInfo.stats.education : 0;
 
   let card = document.createElement('div');
-  card.className = 'person-card col center';
+  card.className = type + ' person-card col center';
   card.innerHTML = `<div class='person-avatar'>
                       <svg viewbox='0 0 100 120'>
                         <defs>
@@ -35,22 +35,22 @@ function createCard(fullInfo) {
                     </div>
                     <div class='person-info col center'>
                       <p class='person-info__head'>${name}</p>
-                      <div class='person-info__stat'>
+                      <div class='person-info__stat ${type}__stat' data-stat='strengths' data-value='${strengths}'>
                         <p class='stat-name'>Strengths: </p>
                         <div class='stat-bar'><span style='width: ${normalize(strengths) * 100}%'></span></div>
                         <p class='stat-value'>${strengths}</p>
                       </div>
-                      <div class='person-info__stat'>
+                      <div class='person-info__stat ${type}__stat' data-stat='jobs' data-value='${jobs}'>
                         <p class='stat-name'>Jobs: </p>
                         <div class='stat-bar'><span style='width: ${normalize(jobs) * 100}%'></span></div>
                         <p class='stat-value'>${jobs}</p>
                       </div>
-                      <div class='person-info__stat'>
+                      <div class='person-info__stat ${type}__stat' data-stat='projects' data-value='${projects}'>
                         <p class='stat-name'>Projects: </p>
                         <div class='stat-bar'><span style='width: ${normalize(projects) * 100}%'></span></div>
                         <p class='stat-value'>${projects}</p>
                       </div>
-                      <div class='person-info__stat'>
+                      <div class='person-info__stat ${type}__stat' data-stat='education' data-value='${education}'>
                         <p class='stat-name'>Education: </p>
                         <div class='stat-bar'><span style='width: ${normalize(education) * 100}%'></span></div>
                         <p class='stat-value'>${education}</p>
@@ -58,4 +58,8 @@ function createCard(fullInfo) {
                     </div>`;
 
   return card;
+}
+
+function addEventsToCard() {
+  document.querySelectorAll('.player-card__stat').forEach(node => node.addEventListener('click', () => gameTurn(event.currentTarget)));
 }
