@@ -66,7 +66,16 @@ function createCard(fullInfo, type) {
 }
 
 function showLoading(parentNode) {
-  parentNode.innerHTML = `<div class='loader row center justify-center'><p></p></div>`;
+  parentNode.innerHTML = `<div class='loader row center justify-center'><div></div></div>`;
+}
+
+function showGameOver(score) {
+  document.querySelector('.game-over__message').innerHTML = `You score was: ${score}`;
+  document.querySelector('.game-over').classList.add('game-over__show');
+}
+
+function removeGameOver(score) {
+  document.querySelector('.game-over').classList.remove('game-over__show');
 }
 
 let handleClick = () => gameTurn(event.currentTarget);

@@ -138,10 +138,13 @@ svg {
 
 .loader {
   width: 100%;
-  height: 390px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.loader p {
+.loader div {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -153,4 +156,69 @@ svg {
 @keyframes loading {
   from {transform: rotate(0deg);}
   to {transform: rotate(360deg);}
+}
+
+.game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.game-over__show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over p {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin: 4px 0;
+}
+
+.game-over > div {
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+  box-shadow: 0 0 16px #333;
+}
+
+.game-over__form input {
+  border: none;
+  border-bottom: 2px solid #fff;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  outline: none;
+}
+
+.game-over__form button {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background-color: transparent;
+  padding: 10px;
+  margin: 40px 0;
+  margin-left: 20px;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+}
+
+.game-over__reset {
+  border: none;
+  background-color: transparent;
+  margin-top: 40px;
+  color: #fff;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
 }

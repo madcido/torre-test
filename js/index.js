@@ -4,12 +4,28 @@ let computerCards = [];
 let computerScore = 0;
 let currentTurn = 0;
 
+
+function reset() {
+  playerCards = [];
+  playerScore = 0;
+  computerCards = [];
+  computerScore = 0;
+  currentTurn = 0;
+  removeGameOver();
+  init();
+}
+
+function submitScore() {
+  alert('Go do some backend now')
+  reset();
+}
+
 function nextTurn() {
   currentTurn++;
   if (currentTurn < playerCards.length) {
     displayCards(currentTurn);
   } else {
-    alert(`Game Over!\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`)
+    showGameOver(playerScore);
   }
 }
 
@@ -70,7 +86,10 @@ function gameTurn(playerStat) {
 }
 
 function init() {
-  showLoading(document.querySelector('.card-container'));
+  let cardContainer = document.querySelector('.card-container');
+  clearNode(cardContainer);
+  showLoading(cardContainer);
+
   fetch('https://cors-anywhere.herokuapp.com/https://bio.torre.co/api/people/torrenegra/connections?limit=20')
     .then(response => response.json())
     .then(connections => {
