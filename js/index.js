@@ -1,16 +1,20 @@
 function changeInput() {
-  let inputValue = document.querySelector('.search-input').value;
-  setTimeout(() => {
-    if (inputValue === document.querySelector('.search-input').value) {
-      fetch('https://cors-anywhere.herokuapp.com/https://bio.torre.co/api/people?q=' + inputValue + '&limit=10')
+  // let inputValue = document.querySelector('.search-input').value;
+  // setTimeout(() => {
+    // if (inputValue === document.querySelector('.search-input').value) {
+      fetch('https://cors-anywhere.herokuapp.com/https://bio.torre.co/api/people?q=fabio%20carmo&limit=1')
         .then(response => response.json())
         .then(data => {
-          let firstCarousel = document.querySelector('.first-carousel');
-          clearNode(firstCarousel);
+          let cardContainer = document.querySelector('.card-container');
+          clearNode(cardContainer);
           data.forEach(person => {
-            firstCarousel.appendChild(createCard(person));
+            fetch('https://cors-anywhere.herokuapp.com/https://bio.torre.co/api/bios/' + person.publicId)
+              .then(response => response.json())
+              .then(fullInfo => cardContainer.appendChild(createCard(fullInfo)));
           })
         })
-    }
-  }, 1000);
+    // }
+  // }, 500);
 }
+
+changeInput();

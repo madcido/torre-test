@@ -1,4 +1,88 @@
 body {
-  background-color: salmon;
+  background-color: #f0f0f0;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Muli', sans-serif;
+}
+
+h1 {
+  margin: 0;
+  color: #00acc1;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+svg {
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.person-card {
+  margin: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  position: relative;
+  width: 300px;
+}
+
+.person-card .person-avatar {
+  position: relative;
+  top: -20px;
+  width: 130px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  z-index: 2;
+}
+
+.person-card .person-info {
+  margin-bottom: 10px;
+  align-self: stretch;
+}
+
+.person-info .person-info__head {
+  color: #333;
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.person-info .person-info__stat {
+  display: flex;
+  padding: 5px ;
+  margin: 5px 0;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.person-info .person-info__stat .stat-name {
+  width: 80px;
+}
+
+.person-info .person-info__stat .stat-bar {
+  width: 140px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.person-info .person-info__stat .stat-bar span {
+  height: 4px;
+  background-color: #00acc1;
+  border-radius: 2px;
+}
+
+.person-info .person-info__stat .stat-value {
+  width: 20px;
+  text-align: center;
 }

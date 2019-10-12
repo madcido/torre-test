@@ -4,8 +4,7 @@ function clearNode(node) {
   }
 }
 
-function createCard(person) {
-  let card = document.createElement('div');
-  card.innerHTML = person.professionalHeadline;
-  return card;
+function normalize(n) {
+  let limitedNumber = (n >= 20) ? 20 : n;
+  return limitedNumber/20;
 }
