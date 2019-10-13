@@ -65,9 +65,12 @@ function createCard(fullInfo, type) {
   return card;
 }
 
-function populateLeaderboard(data) {
-  //implement leaderboard data visualization here
-  document.querySelector('.leaderboard div').innerHTML = data;
+function createScore(name = 'Name', score = 'Score') {
+  let scoreRow = document.createElement('div');
+  scoreRow.className = 'score row';
+  scoreRow.innerHTML = `<p>${name}</p>
+                     <p>${score}</p>`;
+  return scoreRow;
 }
 
 function showLoading(parentNode) {

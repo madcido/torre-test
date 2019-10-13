@@ -239,7 +239,7 @@ svg {
   left: 0;
 }
 
-.leaderboard p {
+.leaderboard > p {
   display: block;
   transform: rotate(-90deg);
   position: absolute;
@@ -253,7 +253,22 @@ svg {
   box-shadow: 0 -5px 0 #00acc1, -1px 0px 4px 0px #000;
 }
 
-.leaderboard div {
+.score-container {
   width: 250px;
-  height: 350px;
+  min-height: 350px;
+}
+
+.score {
+  border-bottom: 1px solid #fff;
+}
+
+.score:last-child {
+  border-bottom: none;
+}
+
+.score p {
+  flex: 1;
+  width: 125px;
+  text-align: center;
+  padding: 10px 0;
 }
