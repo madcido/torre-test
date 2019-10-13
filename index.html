@@ -2,7 +2,7 @@
 <html lang='en' dir='ltr'>
   <head>
     <meta charset='utf-8'>
-    <title>Torre Test</title>
+    <title>Torre Battle Card Game</title>
     <link rel='stylesheet' href='./css/master.css'>
     <link rel='stylesheet' href='./css/flex.css'>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,900&display=swap" rel="stylesheet">
@@ -28,12 +28,13 @@
           <input placeholder="Your name">
           <button onclick='submitScore()'>Submit</button>
         </div>
-        <button class='game-over__reset' onclick='reset()'>Try Again</button>
+        <button class='game-over__reset' onclick='gameReset()'>Try Again</button>
       </div>
     </div>
 
     <script src='./js/util.js'></script>
     <script src='./js/dom.js'></script>
+    <script src='./js/logic.js'></script>
     <script src='./js/index.js'></script>
   </body>
 </html>
